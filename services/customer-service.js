@@ -15,12 +15,12 @@ const postCustomer = (datos) =>{
         {
             method: "POST",
             headers: myHeaders,
-            body:JSON.stringify(CustomerModel)
+            body:JSON.stringify(datos)
         }
     ).then(res=>{
         return res.json()
     }).then(res =>{
-        idUser=res.id;
+        /* idUser=res.id; */
         console.log(res);
     }).catch(err =>{
         console.log(err);
@@ -90,7 +90,7 @@ document.querySelectorAll('.tabOpcion').forEach((val,id) =>{
     })
 });
 
-/* function viewDaraHtml(dataCustomer){
+function viewDaraHtml(dataCustomer){
     console.log(dataCustomer);
 }
 document.querySelector('#btnNuevo').addEventListener("click",(e) =>{
@@ -100,11 +100,23 @@ document.querySelector('#btnNuevo').addEventListener("click",(e) =>{
             e.valueAsDate = new Date();
             e.disabled = true;
         }
-       
-    }) */
+    })
+    document.querySelectorAll('.btn').forEach((element)=>{
+        element.disabled = true;
+        if((element.id !='btnGuardar') && (element.id != 'btnCancelar')){
+            element.classList.add('disabled');
+        }
+    })
+    document.querySelectorAll('.btn').forEach((element)=>{
+        element.disabled = true;
+        if ((element.id !='btnGuardar')){
+            element.classList.add('disabled');
+        }
+    })   
+})
 document.querySelectorAll('.btn').forEach((e) =>{
     e.addEventListener("click",(evento) =>{
-        let datos = JSON.parce(evento.target.dataset.activardesactiva);
+        let datos = JSON.parse(evento.target.dataset.activardesactiva);
         let cardVer = document.querySelector(datos[0]);
         datos[0].forEach(btnActivar =>{
             let btnActual = document.querySelector(btnActivar);
