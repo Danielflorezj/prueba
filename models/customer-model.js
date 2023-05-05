@@ -1,6 +1,6 @@
 const CustomerModel = {
     createdAt: '',
-    nombre: '',
+    nombres: '',
     apellidos: '',
     email: '',
     nroMovil: '',
